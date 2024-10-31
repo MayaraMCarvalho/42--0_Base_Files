@@ -6,7 +6,7 @@
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:51:55 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/17 17:50:23 by macarval         ###   ########.fr       */
+/*   Updated: 2024/09/19 19:50:13 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // Constructor & Destructor ===================================================
 Class::Class( void ) {}
 
-Class::Class( Class const &copy ) { *this = copy; }
-
 Class::~Class( void ) {}
+
+Class::Class( Class const &copy ) { *this = copy; }
 
 // Operators ==================================================================
 Class& Class::operator=( Class const &other )

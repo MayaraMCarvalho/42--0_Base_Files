@@ -1,20 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   *.hpp                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 18:22:45 by macarval         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CLASS_HPP
 # define CLASS_HPP
 
 # include <iostream>
-# include "Colors.hpp"
 
 // Color codes as global variables
 const std::string RESET = "\033[0m";

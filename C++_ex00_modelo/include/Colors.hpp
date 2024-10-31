@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   *.hpp                                              :+:      :+:    :+:   */
+/*   Colors.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 16:51:42 by macarval          #+#    #+#             */
-/*   Updated: 2024/09/19 18:22:45 by macarval         ###   ########.fr       */
+/*   Created: 2024/09/19 18:21:54 by macarval          #+#    #+#             */
+/*   Updated: 2024/09/19 18:22:19 by macarval         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLASS_HPP
-# define CLASS_HPP
+#ifndef COLORS_HPP
+# define COLORS_HPP
 
 # include <iostream>
-# include "Colors.hpp"
 
 // Color codes as global variables
 const std::string RESET = "\033[0m";
@@ -34,29 +33,5 @@ const std::string BBLUE = "\033[1;34m";
 const std::string BPURPLE = "\033[1;35m";
 const std::string BCYAN = "\033[1;36m";
 const std::string BWHITE = "\033[1;37m";
-
-class Class
-{
-	private:
-
-	public:
-	// Constructor & Destructor ===============================================
-		Class( void );
-		~Class( void );
-	// Exceptions =============================================================
-
-	// ========================================================================
-		Class( Class const &copy );
-
-	// Operators ==============================================================
-		Class& operator=( Class const &other );
-
-	// Getters ================================================================
-
-	// Setters ================================================================
-
-	// Methods ================================================================
-
-};
 
 #endif
