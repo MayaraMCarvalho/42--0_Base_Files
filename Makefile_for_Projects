@@ -91,10 +91,10 @@ git:
 						*) echo "$(BRED)Invalid choice"; exit 1 ;; \
 			esac; \
 			echo -n "\n"; \
-			echo "$(BGREEN)Enter the commit message:"; \
+			echo "$(GREEN)Enter the commit message:"; \
 			read msg; \
 			echo -n "\n"; \
-			echo "$(BBLUE)"; \
+			echo "$(BLUE)"; \
 			git commit -m "[ft_irc] $$type: $$msg"; \
 			git push
 
