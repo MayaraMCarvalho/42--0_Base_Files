@@ -1,69 +1,91 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile_for_Projects                              :+:      :+:    :+:    #
+#    Makefile_for_Projects_C                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 16:33:22 by macarval          #+#    #+#              #
-#    Updated: 2024/10/25 08:32:26 by macarval         ###   ########.fr        #
+#    Updated: 2025/10/17 20:22:02 by macarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=
+NAME		= malloc
 
-SRCS		= main.cpp
+SRCS		= main.c
 
-VPATH		= src/
+VPATH		= srcs/
 OBJS_PATH	= obj
-INCLUDE		= -I./include
+LIBS		= -L./libs/libft
 
-FLAGS		= -g3 -Wall -Wextra -Werror -g -std=c++98 -Wpedantic
-CC			= c++
+#libft
+LIBFT_PATH	= ./libs/libft
+LIBFT_INC	= $(LIBFT_PATH)/includes
+LIBFT		= $(LIBFT_PATH)/libft.a
+INCLUDE		= -I./include -I$(LIBFT_INC)
 
-#colors
+FLAGS		= -g3 -Wall -Wextra -Werror
+LFLAGS		= -lft
+CC			= gcc
+
+# Regular colors
+RED			= \033[0;31m
 GREEN		= \033[0;32m
 YELLOW		= \033[0;33m
 BLUE		= \033[0;34m
-MAGENTA		= \033[0;35m
+PURPLE		= \033[0;35m
 CYAN		= \033[0;36m
+WHITE		= \033[0;37m
 RESET		= \033[0m
 
-OBJS 		= $(addprefix $(OBJS_PATH)/, $(SRCS:.cpp=.o))
+# Bold
+BRED		= \033[1;31m
+BGREEN		= \033[1;32m
+BYELLOW		= \033[1;33m
+BBLUE		= \033[1;34m
+BPURPLE		= \033[1;35m
+BCYAN		= \033[1;36m
+BWHITE		= \033[1;37m
+
+OBJS 		= $(addprefix $(OBJS_PATH)/, $(SRCS:.c=.o))
 
 all: 		$(NAME)
 
-$(NAME): 	$(OBJS_PATH) $(OBJS)
-			@$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+$(NAME):	$(LIBFT) $(OBJS_PATH) $(OBJS)
+			@$(CC) $(FLAGS) $(OBJS) $(LFLAGS) $(LIBS) -o $(NAME)
 			@echo "\n$(CYAN)$(NAME): $(GREEN)Done!$(RESET)\n"
+
+$(LIBFT):
+			@make -sC $(LIBFT_PATH)
 
 $(OBJS_PATH):
 			@mkdir -p $(OBJS_PATH)
 
-$(OBJS_PATH)/%.o: %.cpp
+$(OBJS_PATH)/%.o: %.c
 			@$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
 			@echo -n "$(YELLOW)Generating $(CYAN)$(NAME) $(YELLOW)objects..." $@
 			@echo -n "\n"
 
 clean:
+			@make -sC $(LIBFT_PATH) clean
 			@rm -rf $(OBJS_PATH)
 			@echo "$(CYAN)$(NAME): $(GREEN)Clean done!$(RESET)"
 
 fclean:		clean
+			@make -sC $(LIBFT_PATH) fclean
 			@rm -f $(NAME)
 			@echo "$(CYAN)$(NAME): $(GREEN)Full clean done!$(RESET)"
-
 
 re:			fclean all
 
 comp:
 			clear
-			@make -s re
+			@make --no-print-directory -s re
 			@./$(NAME)
 
 val:
 			clear
-			@make -s re
+			@make --no-print-directory -s re
 			@valgrind ./$(NAME)
 
 git:
@@ -95,7 +117,7 @@ git:
 			read msg; \
 			echo -n "\n"; \
 			echo "$(BLUE)"; \
-			git commit -m "[ft_irc] $$type: $$msg"; \
+			git commit -m "[$(NAME)] $$type: $$msg"; \
 			git push
 
 .PHONY:		all re clean fclean comp val git

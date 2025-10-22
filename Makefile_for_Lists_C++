@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile_for_Lists                                 :+:      :+:    :+:    #
+#    Makefile_for_Lists_C++                             :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: macarval <macarval@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 16:33:22 by macarval          #+#    #+#              #
-#    Updated: 2025/09/03 15:56:03 by macarval         ###   ########.fr        #
+#    Updated: 2025/10/17 20:06:42 by macarval         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,16 +18,27 @@ VPATH		= src/
 OBJS_PATH	= obj
 INCLUDE		= -I./include
 
-FLAGS		= -g3 -Wall -Wextra -Werror -g -std=c++98 -Wpedantic
+FLAGS		= -g3 -Wall -Wextra -Werror -std=c++98 -Wpedantic
 CC			= c++
 
-#colors
+# Regular colors
+RED			= \033[0;31m
 GREEN		= \033[0;32m
 YELLOW		= \033[0;33m
 BLUE		= \033[0;34m
-MAGENTA		= \033[0;35m
+PURPLE		= \033[0;35m
 CYAN		= \033[0;36m
+WHITE		= \033[0;37m
 RESET		= \033[0m
+
+# Bold
+BRED		= \033[1;31m
+BGREEN		= \033[1;32m
+BYELLOW		= \033[1;33m
+BBLUE		= \033[1;34m
+BPURPLE		= \033[1;35m
+BCYAN		= \033[1;36m
+BWHITE		= \033[1;37m
 
 OBJS 		= $(addprefix $(OBJS_PATH)/, $(SRCS:.cpp=.o))
 
@@ -58,12 +69,12 @@ re:			fclean all
 
 comp:
 			clear
-			@make -s re
+			@make --no-print-directory -s re
 			@./$(NAME)
 
 val:
 			clear
-			@make -s re
+			@make --no-print-directory -s re
 			@valgrind ./$(NAME)
 
 git:
